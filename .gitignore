@@ -1,0 +1,20 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Salidas y archivos temporales
+salidas/
+*.log
+.DS_Store

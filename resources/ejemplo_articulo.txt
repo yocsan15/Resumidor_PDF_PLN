@@ -1,0 +1,55 @@
+Procesamiento de Lenguaje Natural: Fundamentos y Aplicaciones
+
+Resumen
+
+El procesamiento de lenguaje natural, conocido como PLN, es una disciplina que combina lingüística, informática y estadística para permitir que las computadoras analicen, comprendan y generen texto. En este artículo se presentan los fundamentos teóricos del área, se describen las etapas clásicas de un pipeline de texto y se explican técnicas de representación y extracción de información como la tokenización, la eliminación de stopwords, el stemming y el modelo TF-IDF. Además, se discuten aplicaciones actuales como los resumidores automáticos, la clasificación de documentos y la búsqueda semántica. El objetivo es ofrecer una introducción clara que relacione los conceptos teóricos con una implementación práctica en Python.
+
+1. Introducción
+
+El volumen de información disponible en formato digital crece de manera acelerada. Cada día se publican artículos científicos, informes técnicos, noticias y documentos administrativos que resultan difíciles de leer completos. En este contexto, el procesamiento de lenguaje natural ofrece herramientas para transformar grandes cantidades de texto en información útil. Un resumidor automático es una de las aplicaciones más representativas, porque reduce la longitud de un documento conservando sus ideas principales.
+
+El lenguaje humano es ambiguo, contextual y creativo. Por ello, las computadoras no pueden interpretar texto con las mismas reglas que utilizan para procesar números. El PLN estudia cómo representar el significado de las palabras y las oraciones mediante estructuras computacionales. Estas representaciones permiten medir similitud, detectar temas, clasificar documentos y extraer información relevante.
+
+2. Fundamentos del procesamiento de texto
+
+El primer paso de cualquier sistema de PLN es la limpieza del texto. Los documentos suelen contener encabezados, pies de página, números de página, referencias bibliográficas y caracteres especiales que no aportan al análisis. La normalización convierte el texto a un formato uniforme, elimina espacios repetidos y corrige palabras cortadas por guiones al final de una línea.
+
+La tokenización divide el texto en unidades mínimas llamadas tokens. Un token puede ser una palabra, un número o un signo de puntuación. En la práctica, la tokenización basada en expresiones regulares es rápida y suficiente para muchos idiomas. Después de tokenizar, se eliminan las stopwords, que son palabras muy frecuentes y con poco contenido semántico, como artículos, preposiciones y pronombres.
+
+El stemming reduce las palabras a una raíz común. Por ejemplo, las formas resumen, resumir y resumidores pueden compartir una misma raíz. Esta reducción disminuye el tamaño del vocabulario y agrupa variantes de una misma idea. El lematizado es una alternativa más precisa, pero requiere diccionarios morfológicos y modelos lingüísticos más complejos.
+
+3. Representación vectorial y TF-IDF
+
+Para que un algoritmo pueda comparar oraciones es necesario convertirlas en vectores numéricos. El modelo de bolsa de palabras representa cada documento como un vector de frecuencias. Sin embargo, este modelo asigna la misma importancia a todas las palabras. TF-IDF mejora la representación al combinar la frecuencia del término en el documento con su frecuencia inversa en el corpus.
+
+La frecuencia de término mide cuántas veces aparece una palabra en una oración. La frecuencia inversa de documento mide qué tan rara es la palabra en el conjunto de oraciones. Un término que aparece en todas las oraciones aporta poca información, mientras que un término específico ayuda a distinguir el contenido. El producto de ambas medidas produce un peso que favorece las palabras relevantes y penaliza las palabras comunes.
+
+La similitud coseno compara dos vectores calculando el coseno del ángulo que forman. Su valor está entre cero y uno cuando los vectores tienen componentes no negativos. Dos oraciones que comparten muchas palabras obtienen una similitud alta. Esta medida es la base de algoritmos de resumen, búsqueda y agrupamiento de documentos.
+
+4. Algoritmos de resumen extractivo
+
+Los resumidores extractivos seleccionan oraciones del documento original. No redactan texto nuevo, pero conservan la información literal y suelen producir resultados coherentes. Existen dos enfoques clásicos. El primero puntúa cada oración según su relevancia respecto al documento. El segundo construye un grafo de similitud entre oraciones y aplica una medida de centralidad.
+
+TextRank adapta el algoritmo PageRank al texto. Cada oración es un nodo del grafo y las aristas representan la similitud entre pares de oraciones. Una oración es importante si se conecta con muchas oraciones que también son importantes. El algoritmo distribuye la importancia de forma iterativa hasta alcanzar un equilibrio. Este enfoque captura la estructura global del documento y no depende solo de la frecuencia de palabras.
+
+La selección Maximal Marginal Relevance, conocida como MMR, añade un control de redundancia. En cada iteración elige la oración que maximiza una combinación de relevancia y novedad. Si una oración se parece demasiado a otra ya seleccionada, recibe una penalización. De esta forma el resumen cubre más ideas en lugar de repetir la misma información con palabras distintas.
+
+5. Aplicaciones y evaluación
+
+Los resumidores automáticos se utilizan en sistemas de gestión documental, motores de búsqueda, asistentes virtuales y plataformas educativas. También apoyan la revisión de literatura científica y la elaboración de informes. En todos los casos es importante evaluar la calidad del resumen. Las métricas automáticas comparan el resumen con un resumen de referencia, mientras que la evaluación humana valora la coherencia, la claridad y la fidelidad.
+
+Entre las métricas más conocidas se encuentran ROUGE y BLEU. ROUGE mide la cobertura de palabras o secuencias del resumen de referencia. BLEU se utiliza principalmente en traducción automática y compara secuencias de palabras. Ninguna métrica es perfecta, por lo que la evaluación de un resumen combina medidas automáticas con revisión humana.
+
+6. Conclusiones
+
+El procesamiento de lenguaje natural proporciona un marco sólido para analizar documentos de forma automática. La tokenización, las stopwords, el stemming y TF-IDF son técnicas fundamentales que siguen siendo útiles en la era de los grandes modelos de lenguaje. Los algoritmos extractivos como TF-IDF y TextRank son interpretables, eficientes y fáciles de implementar. Combinados con MMR, permiten generar resúmenes diversos y representativos. Este artículo muestra que la teoría y la práctica pueden integrarse en una aplicación web accesible para cualquier usuario.
+
+Referencias
+
+Jurafsky, D. y Martin, J. Speech and Language Processing. Pearson, 2023.
+
+Manning, C. y Schütze, H. Foundations of Statistical Natural Language Processing. MIT Press, 1999.
+
+Mihalcea, R. y Tarau, P. TextRank: Bringing Order into Texts. EMNLP, 2004.
+
+Carbonell, J. y Goldstein, J. The Use of MMR, Diversity-Based Reranking for Reordering Documents. SIGIR, 1998.
